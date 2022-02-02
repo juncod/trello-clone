@@ -30,7 +30,6 @@ function ToDo({ text, category, id }: IToDo){
         })
     }
     localStorage.setItem("save",JSON.stringify(toDos));
-    localStorage.setItem("category",category);
     return(
         <li>
             <span>{text}</span>
