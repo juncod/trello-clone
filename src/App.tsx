@@ -1,11 +1,7 @@
-import {createGlobalStyle} from "styled-components";
-import Router from "./Router";
-import { ReactQueryDevtools } from "react-query/devtools";
-import styled,{ ThemeProvider } from "styled-components";
-import { darkmode, lightmode } from "./theme";
-import { useState } from "react";
+import { createGlobalStyle } from "styled-components";
+import ToDoList from "./components/ToDoList"
 
-const Globalstyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -66,37 +62,15 @@ body {
 }
 a {
   text-decoration:none;
-  color: inherit;
+  color:inherit;
 }
 `;
-const Button = styled.button`
-  display:flex;
-  margin-bottom:20px;
-  border: solid 2px ${(props)=> props.theme.textColor};
-  font-weight:bold;
-  color : ${(props)=> props.theme.textColor};
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  width:120px;
-  padding : 8px 0px;
-  background-color: ${(props)=> props.theme.boxColor};
-  &:hover {cursor:pointer;}
-`
-
 function App() {
-  const [isDark, setIsDark] = useState(false);
-  const toggleDark = () => setIsDark(current => !current);
   return (
     <>
-    <ThemeProvider theme={isDark ? darkmode : lightmode}>
-    <Globalstyle/>
-    <Button onClick={toggleDark}>{isDark ? 'light mode' : 'dark mode'}</Button>
-    <Router isDark={isDark}/>
-    </ThemeProvider>
-    <ReactQueryDevtools initialIsOpen={true} />
+      <GlobalStyle />
+      <ToDoList />
     </>
   );
 }
-
 export default App;
